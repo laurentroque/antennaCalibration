@@ -5,9 +5,7 @@ Created on Tue Nov 20 16:55:18 2018
 @author: ilvr2
 
 This script obtains the frequency stamps from the antenna calibration
-measurements. As of now, I believe that all measurements are taken at the exact
-same frequencies so this only needs to be used onced and all measurements
-should be mathced to these frequencies.
+measurements.
 
 Code is tested using data from RAPID: "PL_load.prn"
 """
