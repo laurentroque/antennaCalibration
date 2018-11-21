@@ -36,10 +36,12 @@ def regularGetData(filename):
         for j in range(0, 2):
             # Converting string data into number data as double array
             dataLines[i][j] = float(dataLines[i][j])
+        dataLines[i][1] = 10.00** ((dataLines[i][1] - 30.00) / 10.0)            
+
         
     return dataLines
 
-#'''
+'''
 # Test to see if it works
 regularData = []
 regularData = regularGetData('PL_load.prn')
@@ -47,5 +49,5 @@ regularData = regularGetData('PL_load.prn')
 print regularData
 print type(regularData)
 print len(regularData)
-#'''
+'''
 
