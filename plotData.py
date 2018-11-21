@@ -11,31 +11,36 @@ Tested with 'PL_load.prn' from RAPID containing spectra of external load
 
 def plotData(filename):
     # Importing the functions from frequency stamp and data reading scripts
-    from UnitConversion import convertUnits
-    from getFrequencyStamps import getFrequencyStamps
+    from regularGetData import regularGetData
     import matplotlib.pyplot as plt
 
     # Taking data
-    externalLoadSpectra = []
-    externalLoadSpectra = convertUnits(filename)
+    dataLines = regularGetData('PL_load.prn')
     frequency = []
-    frequency = getFrequencyStamps(filename)
+    measurement = []
+    for i in range(len(dataLines)):
+        frequency.append(dataLines[i][0])
+        
+        # Converting Hz to Mhz
+        frequency[i] = (frequency[i] / 1000000)
+        measurement.append(dataLines[i][1])
 
     '''
     # For testing...
-    print externalLoadSpectra
+    print measurement
+    print
     print frequency
     '''
 
     # Plotting data and labeling axes
-    #          x-axis          y-axis
-    plt.plot(frequency, externalLoadSpectra)
-    plt.xlabel('Frequency in MHz (ignore the 1e8 ---->)')
+    #          x-axis      y-axis
+    plt.plot(frequency, measurement)
+    plt.xlabel('Frequency in MHz')
     plt.ylabel('Power Spectral Density in W/Hz')
     plt.title('Plot of PSD of External Load in "load" Switch Position')
     plt.show()
  
-'''
+#'''
 # Test
 plotData('PL_load.prn')
-'''
+#'''

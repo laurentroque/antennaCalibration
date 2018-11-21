@@ -36,6 +36,7 @@ def regularGetData(filename):
         for j in range(0, 2):
             # Converting string data into number data as double array
             dataLines[i][j] = float(dataLines[i][j])
+        # Converting dB/HZ to W/Hz    
         dataLines[i][1] = 10.00** ((dataLines[i][1] - 30.00) / 10.0)            
 
         
