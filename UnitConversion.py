@@ -72,8 +72,8 @@ def convertUnits(filename):
 
     # Mathematical conversion
     #dd = 10.0 ** ((dd - 30.0) / 10.0)
-    for i in measurement:
-        i = 10.00** ((i - 30.00) / 10.0)
+    for i in range(len(measurement)):
+        measurement[i] = 10.00** ((measurement[i] - 30.00) / 10.0)
     
     '''
     # Checks for correct conversion
@@ -91,6 +91,7 @@ def convertUnits(filename):
     #return ff
     #return dd
 
+'''
 #frequency = []
 externalLoadSpectra = []
 externalLoadSpectra = convertUnits('PL_load.prn')
@@ -100,3 +101,4 @@ externalLoadSpectra = convertUnits('PL_load.prn')
 print externalLoadSpectra
 print type(externalLoadSpectra)
 print len(externalLoadSpectra)
+'''
