@@ -41,7 +41,9 @@ for frequencies in receiverS11:
 # Antenna reflection coefficents
 for frequencies in antennaS11:    
     antReflec.append(frequencies[1])
-    
+
+# Multiplying the receiver and antenna reflection coefficients and adding to 
+# a list    
 for i in range(0, len(recReflec)):
     product = np.multiply(recReflec[i], antReflec[i])
     # Complex reflection coefficent products
@@ -72,6 +74,7 @@ for i in range(0, len(gammaAntGammaRec)):
 # Building F Equation (3)    
 F = []
 
+# Dividing top by bottom at each frequency and adding to list
 for i in range(0, len(top)):
     # Building the quotient
     quotient = top[i] / bottom[i]
@@ -113,7 +116,7 @@ for i in range(0, len(F)):
 top[:] = []
 bottom[:] = []
 
-# Populating the tops of the quotients
+# Populating the tops of the quotients at each frequency
 for i in range(0, len(modF)):
     l = (modAntS11[i]) ** 2
     l = 1 - l
@@ -192,7 +195,7 @@ THIS ALSO IS ASSUMED TO BE IN RADIANS BUT I AM NOT 100% SURE !!!!!!!!!!!!!!!!!!
 '''
 # Top and bottom of quotient stays the same
 
-# We now need the sine of all the ALPHA's
+# We need the sine of all the ALPHA's
 sinALPHA = []
 for i in range(0, len(ALPHA)): 
     d = math.sin(ALPHA[i][1])
@@ -204,5 +207,3 @@ for i in range(0, len(top)):
     quotient = quotient = top[i] / bottom[i]
     a = quotient * sinALPHA[i]
     mathsForT_sin.append([F[i][0], a])
-    
-print mathsForT_sin
